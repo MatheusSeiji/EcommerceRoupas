@@ -3,8 +3,6 @@ const router = express.Router();
 
 const ClienteController = require('./controllers/ClienteController');
 
-router.get('/',(req,res)=>{
-    console.log('teste');
-    res.send('teste');
-});
+router.get('/cliente', ClienteController.buscarTodos);
+
 module.exports = router;
