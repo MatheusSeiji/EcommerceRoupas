@@ -32,4 +32,20 @@ module.exports = {
       );
     });
   },
+
+  insert: (nome, email, endereço) => {
+    return new Promise((aceito, rejeitado) => {
+      db.query(
+        "INSERT INTO clientes (nome, email, endereço) VALUES (?, ?, ?)",
+        [nome, email, endereço],
+        (error, results) => {
+          if (error) {
+            rejeitado(error);
+            return;
+          }
+          aceito(results.insertCodigo);
+        }
+      );
+    });
+  },
 };

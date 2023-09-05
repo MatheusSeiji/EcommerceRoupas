@@ -27,4 +27,26 @@ module.exports = {
 
     res.json(json);
   },
+
+  insert: async (rec, res) => {
+    let json = { error: "", result: {} };
+
+    let nome = req.body.nome;
+    let email = req.body.email;
+    let endereço = req.bady.endereço;
+
+    if (nome && email && endereço) {
+      let clienteCodigo = await ClienteService.insert(nome, email, endereço);
+      json.result = {
+        codigo: clienteCodigo,
+        nome,
+        email,
+        endereço,
+      };
+    } else {
+      json.error = "Campos não enviados";
+    }
+
+    res.json(json);
+  },
 };
