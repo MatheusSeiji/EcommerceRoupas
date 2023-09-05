@@ -48,4 +48,21 @@ module.exports = {
       );
     });
   },
+
+  alterar: (codigo, nome, email, endereço) => {
+    return new Promise((aceito, rejeitado) => {
+      db.query(
+        "UPDATE clientes SET nome = ?, email = ?, endereço ? WHERE codigo = ?)",
+        [nome, email, endereço],
+        codigo,
+        (error, results) => {
+          if (error) {
+            rejeitado(error);
+            return;
+          }
+          aceito(results);
+        }
+      );
+    });
+  },
 };

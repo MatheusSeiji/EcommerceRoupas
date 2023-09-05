@@ -49,4 +49,27 @@ module.exports = {
 
     res.json(json);
   },
+
+  alterar: async (rec, res) => {
+    let json = { error: "", result: {} };
+
+    let codigo = req.params.codigo;
+    let nome = req.body.nome;
+    let email = req.body.email;
+    let endereço = req.bady.endereço;
+
+    if (codigo && nome && email && endereço) {
+      await ClienteService.alterar(nome, email, endereço);
+      json.result = {
+        codigo,
+        nome,
+        email,
+        endereço,
+      };
+    } else {
+      json.error = "Campos não enviados";
+    }
+
+    res.json(json);
+  },
 };
