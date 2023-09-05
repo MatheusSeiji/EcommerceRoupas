@@ -1,1 +1,1 @@
-const ClienteService = require('../services/Cliente.service');
+const ClienteService = require('../services/ClienteService');
