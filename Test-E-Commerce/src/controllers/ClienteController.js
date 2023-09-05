@@ -13,5 +13,19 @@ module.exports = {
             });
         }
         res.json(json);
+    },
+
+    searchOne: async(rec, res) => {
+        let json = {error: '', result:{}};
+
+        let idcliente= req.params.idcliente;
+        let cliente = await ClienteService.searchOne(idcliente);
+
+        if(cliente){
+           json.result = cliente;
+        } 
+
+        res.json(json);
     }
-}
+
+    }
